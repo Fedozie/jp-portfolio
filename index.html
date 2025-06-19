@@ -4,33 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JP Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Abel&family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li class="navbar-item">
-          <a href="">JP.</a>
-          <p>Home</p>
-        </li>
-        <li class="navbar-item">
-          <a href="">About</a>
-          <p>What I do</p>
-        </li>
-        <li class="navbar-item">
-          <a href="">Portfolio</a>
-          <p>See my works</p>
-        </li>
-        <li class="navbar-item">
-          <a href="">Other</a>
-          <p>More about me </p>
-        </li>
-        <li class="navbar-item">
-          <a href=""> Say Hello</a>
-          <p>Get in touch</p>
-        </li>
-      </ul>
-    </nav>
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+
+    <div class="content">
+      <section class="viewport-container">
+        <!--Navigation Bar-->
+        <header>
+          <nav class="navbar">
+            <ul class="navbar-list">
+              <li class="navbar-item">
+                <a href="">JP.</a>
+                <p>home</p>
+              </li>
+              <li class="navbar-item">
+                <a href="">About</a>
+                <p>what i do</p>
+              </li>
+              <li class="navbar-item">
+                <a href="">Portfolio</a>
+                <p>see my works</p>
+              </li>
+              <li class="navbar-item">
+                <a href="">Other</a>
+                <p>more about me</p>
+              </li>
+              <li class="navbar-item">
+                <a href=""> Say Hello</a>
+                <p>get in touch</p>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <!--Main Content-->
+        <main class="main">
+          <div class="main-first">
+            <div></div>
+            <p>Hello World</p>
+          </div>
+          <div class="main-second">
+            <h1>
+              I am John Paul,<br />
+              a digital marketer & software developer<br />
+              based in Enugu,
+              <span class="nigeria">
+                <span style="color: #008751">Ni</span><span>ger</span
+                ><span style="color: #008751">ia</span>.
+              </span>
+            </h1>
+          </div>
+        </main>
+      </section>
+    </div>
 
     <script src="script.js"></script>
   </body>
