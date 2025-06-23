@@ -12,7 +12,6 @@ document.querySelectorAll('.navbar-item').forEach(item => {
       navItem.classList.remove('active');
     });
     
-    // Add active class to clicked item immediately
     this.classList.add('active');
     
     const targetId = link.getAttribute('href');
