@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
 :root {
   --black-colour: #000000;
   --white-colour: #ffffff;
@@ -9,9 +11,11 @@
   --pri-colour-3: #9c4c00;
   --pri-colour-4: #d08300;
   --pri-colour-5: #eabd7c;
-  --font-base: "Lexend", sans-serif;
-  --font-sec: "Public Sans", sans-serif;
+  --font-base: "Lexend Deca", sans-serif;
+  --font-pri: "Public Sans", sans-serif;
   --font-serif: "DM Serif Display", serif;
+  --font-sec: "Bebas Neue", sans-serif;
+  --font-tet: "Abel", sans-serif;
 }
 
 *,
@@ -122,7 +126,7 @@ body {
   }
 
   .navbar-item p {
-    font-family: var(--font-sec);
+    font-family: var(--font-pri);
     color: var(--white-colour);
     opacity: 0;
     transform: translateY(10px);
@@ -209,9 +213,32 @@ body {
     list-style-type: none;
   }
 
+  .main-socials li {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInSocial 0.5s ease-out forwards;
+  }
+
+  #home.visible .main-socials li {
+    animation: slideInSocial 0.5s ease-out forwards;
+  }
+
+  .main-socials li:nth-child(1) {
+    animation-delay: 2.5s;
+  }
+  .main-socials li:nth-child(2) {
+    animation-delay: 2.7s;
+  }
+  .main-socials li:nth-child(3) {
+    animation-delay: 2.9s;
+  }
+  .main-socials li:nth-child(4) {
+    animation-delay: 3.1s;
+  }
+
   .main-socials a {
     cursor: pointer;
-    font-family: var(--font-sec);
+    font-family: var(--font-pri);
     font-size: 0.8rem;
     color: rgb(132, 132, 132);
     text-decoration: none;
@@ -221,7 +248,7 @@ body {
 
   .main-socials a:hover {
     color: var(--white-colour);
-    transition-delay: .3s;
+    transition-delay: 0.3s;
     transition: color 0.5s ease-in-out;
   }
 
@@ -287,7 +314,7 @@ body {
     }
 
     .about-description-heading > p {
-      font-family: var(--font-base);
+      font-family: var(--font-sec);
       font-size: 1.5rem;
       font-weight: 400;
       letter-spacing: 3px;
@@ -297,7 +324,7 @@ body {
   }
 
   .about-description > p {
-    font-family: var(--font-sec);
+    font-family: var(--font-pri);
     font-size: 1.25rem;
     color: var(--white-colour);
     margin-top: 1rem;
@@ -357,7 +384,7 @@ body {
 .about-expertise-heading {
   color: var(--white-colour);
   margin-bottom: 3rem;
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -372,6 +399,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .expertise-item {
@@ -380,7 +408,7 @@ body {
 }
 
 .expertise-title {
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   font-size: 1.5rem;
   font-weight: 400;
   color: #999;
@@ -432,7 +460,7 @@ body {
 }
 
 .company-name {
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   color: var(--white-colour);
   font-size: 2.5rem;
   font-weight: 300;
@@ -441,7 +469,7 @@ body {
 }
 
 .role {
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   color: var(--white-colour);
   font-size: 1.3rem;
   font-weight: 300;
@@ -449,9 +477,9 @@ body {
 }
 
 .date {
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   color: #666;
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -459,13 +487,152 @@ body {
 }
 
 .description {
-  font-family: var(--font-sec);
+  font-family: var(--font-pri);
   color: #999;
   font-size: 16px;
   line-height: 1.8;
   font-weight: 300;
   margin: 0;
   max-width: 600px;
+}
+
+.about-description-heading,
+.about-description > p,
+.about-description-button,
+.about-expertise-heading,
+.about-expertise-description,
+.expertise-title,
+.job {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+#about.visible .about-description-heading,
+#about.visible .about-description > p,
+#about.visible .about-description-button,
+.about-expertise.visible .about-expertise-heading,
+.about-expertise.visible .about-expertise-description,
+.about-expertise.visible .expertise-title,
+.about-expertise.visible .job {
+  animation: slideUpFade 0.6s ease-out forwards;
+}
+
+.about-description-heading {
+  animation-delay: 0.2s;
+}
+.about-description > p {
+  animation-delay: 0.4s;
+}
+.about-description-button {
+  animation-delay: 0.6s;
+}
+
+.about-expertise.visible .about-expertise-heading {
+  animation-delay: 0.2s;
+}
+.about-expertise.visible .about-expertise-description {
+  animation-delay: 0.4s;
+}
+.about-expertise.visible .expertise-title:nth-child(1) {
+  animation-delay: 0.6s;
+}
+.about-expertise.visible .expertise-title:nth-child(2) {
+  animation-delay: 0.8s;
+}
+.about-expertise.visible .job:nth-child(1) {
+  animation-delay: 1s;
+}
+.about-expertise.visible .job:nth-child(2) {
+  animation-delay: 1.2s;
+}
+.about-expertise.visible .job:nth-child(3) {
+  animation-delay: 1.4s;
+}
+.about-expertise.visible .job:nth-child(4) {
+  animation-delay: 1.6s;
+}
+
+.portfolio {
+  padding: 5rem;
+  color: var(--white-colour);
+}
+
+.portfolio-intro {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.intro-port {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+
+  .intro-port-heading {
+    font-size: 15rem;
+    text-transform: uppercase;
+    font-family: "Dela Gothic One", sans-serif;
+    color: var(--pri-colour-5);
+  }
+
+  .intro-port-text {
+    font-size: 1.25rem;
+    text-align: right;
+    text-transform: uppercase;
+    font-family: var(--font-pri);
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+  }
+}
+
+.intro-folio {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+
+  .intro-folio-heading {
+    font-size: 15rem;
+    text-transform: uppercase;
+    font-family: "Dela Gothic One", sans-serif;
+    color: var(--pri-colour-5);
+  }
+
+  .intro-folio-text {
+    font-size: 1.25rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: var(--font-pri);
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+  }
+}
+
+.portfolio-main {
+  padding: 3rem 5rem;
+  position: relative;
+}
+
+.portfolio-main::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 70rem;
+  height: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--grey-colour);
+}
+
+.portfolio-main-heading {
+  color: var(--white-colour);
+  font-family: var(--font-serif);
+  font-size: 2rem;
 }
 
 @keyframes shine {
@@ -524,5 +691,27 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slideInSocial {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -2,21 +2,21 @@
 document.querySelectorAll('.navbar-item').forEach(item => {
   item.addEventListener('click', function (e) {
     e.preventDefault();
-    
+
     // Find the link within this navbar item
     const link = this.querySelector('a');
     if (!link) return;
-    
+
     // Remove active class from all navbar items first
     document.querySelectorAll('.navbar-item').forEach(navItem => {
       navItem.classList.remove('active');
     });
-    
+
     this.classList.add('active');
-    
+
     const targetId = link.getAttribute('href');
     const targetSection = document.querySelector(targetId);
-    
+
     if (targetSection) {
       targetSection.scrollIntoView({
         behavior: 'smooth',
@@ -60,7 +60,7 @@ const handleScroll = debounce(() => {
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionBottom = sectionTop + section.offsetHeight;
-    
+
     if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
       current = section.getAttribute('id');
     }
@@ -74,11 +74,11 @@ const handleScroll = debounce(() => {
   // Update active class on navbar items
   if (current) {
     let activeItemFound = false;
-    
+
     navbarItems.forEach(item => {
       const link = item.querySelector('a');
       const href = link?.getAttribute('href');
-      
+
       if (href === `#${current}`) {
         if (!item.classList.contains('active')) {
           // Remove active from all items first
@@ -109,15 +109,39 @@ window.addEventListener('scroll', handleScroll);
 document.addEventListener('DOMContentLoaded', () => {
   // Remove active class from all items first
   navbarItems.forEach(item => item.classList.remove('active'));
-  
+
   // Set home as active initially
   const homeNavItem = document.querySelector('.navbar-item a[href="#home"]');
   if (homeNavItem) {
     homeNavItem.parentElement.classList.add('active');
   }
-  
+
   // Run initial scroll handler after a short delay
   setTimeout(() => {
     handleScroll();
   }, 200);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select sections to observe
+  const sections = document.querySelectorAll("#home, #about, .about-expertise, #portfolio, #other, #contact");
+
+  // Create IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add 'visible' class to trigger animations
+          entry.target.classList.add("visible");
+        } else {
+          // Optional: Remove 'visible' class to replay animations when scrolling back
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0.2 } // Trigger when 10% of section is visible
+  );
+
+  // Observe each section
+  sections.forEach((section) => observer.observe(section));
 });
