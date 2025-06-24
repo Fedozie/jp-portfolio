@@ -200,6 +200,31 @@ body {
     animation-delay: 2.3s; /* Start after loader (2s) + content fade-in (0.8s) */
   }
 
+  .main-socials {
+    transform: rotate(270deg);
+    display: flex;
+    position: absolute;
+    right: -6rem;
+    gap: 3rem;
+    list-style-type: none;
+  }
+
+  .main-socials a {
+    cursor: pointer;
+    font-family: var(--font-sec);
+    font-size: 0.8rem;
+    color: rgb(132, 132, 132);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  .main-socials a:hover {
+    color: var(--white-colour);
+    transition-delay: .3s;
+    transition: color 0.5s ease-in-out;
+  }
+
   .nigeria {
     -webkit-mask-image: linear-gradient(
       -75deg,
@@ -219,8 +244,8 @@ body {
   }
 }
 
-.about {
-  padding: 0 10rem;
+.about-main {
+  padding: 0 5rem;
   width: 100%;
   position: relative;
   display: flex;
@@ -324,6 +349,125 @@ body {
   }
 }
 
+.about-expertise {
+  width: 100%;
+  padding: 5rem 15rem;
+}
+
+.about-expertise-heading {
+  color: var(--white-colour);
+  margin-bottom: 3rem;
+  font-family: var(--font-sec);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.about-expertise-description {
+  color: var(--white-colour);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+}
+
+.about-expertise-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.expertise-item {
+  max-width: 800px;
+  margin: 3rem 0;
+}
+
+.expertise-title {
+  font-family: var(--font-sec);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.job {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 80px;
+  position: relative;
+  height: auto;
+}
+
+.job:last-child {
+  margin-bottom: 0;
+}
+
+.bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--pri-colour-5);
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-right: 30px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.bullet::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 20rem;
+  background-color: #333;
+  z-index: 1;
+}
+
+.job-details {
+  flex: 1;
+  padding-top: 0;
+}
+
+.company-name {
+  font-family: var(--font-sec);
+  color: var(--white-colour);
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.role {
+  font-family: var(--font-sec);
+  color: var(--white-colour);
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0 0 15px 0;
+}
+
+.date {
+  font-family: var(--font-sec);
+  color: #666;
+  font-size: .85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 30px 0;
+}
+
+.description {
+  font-family: var(--font-sec);
+  color: #999;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+  margin: 0;
+  max-width: 600px;
+}
+
 @keyframes shine {
   from {
     -webkit-mask-position: 150%;
@@ -372,7 +516,6 @@ body {
     transform: translateX(0);
   }
 }
-
 
 @keyframes revealFromBottom {
   from {
