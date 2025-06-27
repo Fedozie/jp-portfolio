@@ -586,12 +586,11 @@ body {
   }
 }
 
-.intro-middle{
+.intro-middle {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .intro-folio {
@@ -793,6 +792,57 @@ body {
   margin: 0 0.5rem;
 }
 
+.external-icon > i{
+  color: var(--white-colour);
+  transition: color 0.3s ease, transform 0.5s ease-in-out;
+;
+}
+
+.project-card:hover .external-icon > i{
+  color: var(--pri-colour-5);
+  transform: rotate(-45deg);
+}
+
+.other {
+  width: 80%;
+  margin: 0 auto;
+  padding: 5rem 0;
+  position: relative;
+  border: 1px solid red;
+}
+
+.other-heading {
+  font-family: var(--font-pri);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white-colour);
+  margin: 1rem 0;
+}
+
+.other-text {
+  width: 100%;
+  color: var(--white-colour);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.other-text-intro,
+.other-text-description {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.other-text-intro > p,
+.other-text-description > p {
+  display: block;
+  width: 60%;
+}
+
 .contact {
   width: 80%;
   margin: 0 auto;
@@ -800,7 +850,7 @@ body {
   position: relative;
 }
 
-.contact::after{
+.contact::after {
   content: "";
   position: absolute;
   bottom: 3rem;
@@ -809,7 +859,6 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background-color: rgb(161, 161, 161);
-  
 }
 
 .contact-first {
@@ -922,12 +971,106 @@ body {
   }
 }
 
-.copyright{
+.copyright {
   width: 100%;
   padding: 0 10.5rem;
   font-family: var(--font-pri);
   color: rgb(161, 161, 161);
   margin-bottom: 3rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #2a2a2a;
+  margin: 5% auto;
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: rgb(255, 51, 51);
+}
+
+.modal-title {
+  font-family: var(--font-pri);
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #d4a574;
+}
+
+.modal-type {
+  font-family: var(--font-pri);
+  color: #888;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.modal-description {
+  font-family: var(--font-base);
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.modal-image {
+  width: 100%;
+  height: 20.625rem;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.modal-tech {
+  margin-top: 20px;
+}
+
+.modal-tech h4 {
+  font-family: var(--font-pri);
+  color: #d4a574;
+  margin-bottom: 10px;
+}
+
+.tech-tags {
+  font-family: var(--font-tet);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background-color: #3a3a3a;
+  color: #ccc;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
 }
 
 @keyframes shine {
@@ -1008,5 +1151,16 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

@@ -19,6 +19,7 @@
       <div class="spinner"></div>
     </div>
 
+    <!--Home-->
     <div class="content">
       <section class="viewport-container">
         <!--Navigation Bar-->
@@ -75,6 +76,8 @@
           </ul>
         </main>
       </section>
+
+      <!--About Section-->
       <section id="about">
         <section class="about-main">
           <div class="about-image">
@@ -179,6 +182,7 @@
         </section>
       </section>
 
+      <!--Portfolio Section-->
       <section class="portfolio" id="portfolio">
         <section class="portfolio-intro">
           <div class="intro-port">
@@ -190,7 +194,7 @@
             </p>
           </div>
           <div class="intro-middle">
-            <i class="fa-solid fa-briefcase fa-2xl" style="color: #eabd7c;"></i>
+            <i class="fa-solid fa-briefcase fa-2xl" style="color: #eabd7c"></i>
           </div>
           <div class="intro-folio">
             <div class="intro-folio-text">
@@ -208,98 +212,34 @@
             Feel free to check them out.
           </p>
           <div class="projects-container">
-            <div class="project-card" data-project="retro-camera">
-              <div class="project-image-container">
-                <img
-                  src="./assets/about-us-hero-img.webp"
-                  alt="Retro Camera"
-                  class="project-image"
-                />
-                <div class="image-overlay">
-                  <div class="plus-icon"></div>
-                </div>
-              </div>
-              <div class="project-content">
-                <div class="project-type">Website</div>
-                <div class="project-title">Retro Camera.</div>
-                <div class="external-icon">
-                  <i
-                    class="fa-solid fa-arrow-right-long fa-rotate-by"
-                    style="color: #fff; --fa-rotate-angle: -45deg"
-                  ></i>
-                </div>
-              </div>
-            </div>
-            <div class="project-card" data-project="retro-camera">
-              <div class="project-image-container">
-                <img
-                  src="./assets/about-us-hero-img.webp"
-                  alt="Retro Camera"
-                  class="project-image"
-                />
-                <div class="image-overlay">
-                  <div class="plus-icon"></div>
-                </div>
-              </div>
-              <div class="project-content">
-                <div class="project-type">Website</div>
-                <div class="project-title">Retro Camera.</div>
-                <div class="external-icon">
-                  <i
-                    class="fa-solid fa-arrow-right-long fa-rotate-by"
-                    style="color: #fff; --fa-rotate-angle: -45deg"
-                  ></i>
-                </div>
-              </div>
-            </div>
-            <div class="project-card" data-project="retro-camera">
-              <div class="project-image-container">
-                <img
-                  src="./assets/about-us-hero-img.webp"
-                  alt="Retro Camera"
-                  class="project-image"
-                />
-                <div class="image-overlay">
-                  <div class="plus-icon"></div>
-                </div>
-              </div>
-              <div class="project-content">
-                <div class="project-type">Website</div>
-                <div class="project-title">Retro Camera.</div>
-                <div class="external-icon">
-                  <i
-                    class="fa-solid fa-arrow-right-long fa-rotate-by"
-                    style="color: #fff; --fa-rotate-angle: -45deg"
-                  ></i>
-                </div>
-              </div>
-            </div>
-            <div class="project-card" data-project="retro-camera">
-              <div class="project-image-container">
-                <img
-                  src="./assets/about-us-hero-img.webp"
-                  alt="Retro Camera"
-                  class="project-image"
-                />
-                <div class="image-overlay">
-                  <div class="plus-icon"></div>
-                </div>
-              </div>
-              <div class="project-content">
-                <div class="project-type">Website</div>
-                <div class="project-title">Retro Camera.</div>
-                <div class="external-icon">
-                  <i
-                    class="fa-solid fa-arrow-right-long fa-rotate-by"
-                    style="color: #fff; --fa-rotate-angle: -45deg"
-                  ></i>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       </section>
-      <section id="other">Other</section>
+
+      <!--Other Sections-->
+      <section class="other" id="other">
+        <div class="other-heading">
+          <p>who am i?</p>
+        </div>
+        <div class="other-text">
+          <div class="other-text-intro">
+            <p>
+              I’m John Paul, a proud Nigerian living in Enugu, Nigeria, working
+              as a digital marketer and software developer.
+            </p>
+            <img src="" alt="" />
+          </div>
+          <div class="other-text-description">
+            <img src="" alt="" />
+            <p>
+              You may be familiar with my projects, but I’d love to give you a
+              glimpse into the person behind the code and campaigns.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!--Contact Section-->
       <section class="contact" id="contact">
         <div class="contact-first">
           <p>Get in touch</p>
@@ -337,12 +277,28 @@
         </div>
       </section>
 
+      <!--Copyright Section-->
       <section class="copyright" id="contact">
         <div>
           <p>&copy; Copyright Edozie 2025</p>
         </div>
-
       </section>
+
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+          <img id="modalImage" class="modal-image" src="" alt="" />
+          <div id="modalType" class="modal-type"></div>
+          <h2 id="modalTitle" class="modal-title"></h2>
+          <p id="modalDescription" class="modal-description"></p>
+          <div class="modal-tech">
+            <h4>Technologies Used:</h4>
+            <div id="modalTech" class="tech-tags"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
