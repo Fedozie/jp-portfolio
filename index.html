@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JP Portfolio</title>
+    <title>JP's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,6 +25,17 @@
         <!--Navigation Bar-->
         <header>
           <nav class="navbar">
+            <h2 class="mobile-home">
+              <a href="/">JP.</a>
+            </h2>
+
+            <button class="hamburger-open">
+              <span class="line-1"></span>
+              <span class="line-2"></span>
+              <span class="line-3"></span>
+            </button>
+            <!-- Hamburger icon -->
+
             <ul class="navbar-list">
               <li class="navbar-item">
                 <a href="#home">JP.</a>
@@ -47,6 +58,22 @@
                 <p>get in touch</p>
               </li>
             </ul>
+
+            <div class="mobile-nav-list-container">
+              <button class="hamburger-close">
+                <span class="line x-line-1"></span>
+                <span class="line x-line-2"></span>
+              </button>
+              <ul class="mobile-nav-list">
+                <li class="mobile-nav-item"><a href="#home">Home</a></li>
+                <li class="mobile-nav-item"><a href="#about">About</a></li>
+                <li class="mobile-nav-item">
+                  <a href="#portfolio">Portfolio</a>
+                </li>
+                <li class="mobile-nav-item"><a href="#other">Other</a></li>
+                <li class="mobile-nav-item"><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
           </nav>
         </header>
 
@@ -78,7 +105,7 @@
       </section>
 
       <!--About Section-->
-      <section id="about">
+      <section id="about" class="about">
         <section class="about-main">
           <div class="about-image">
             <img src="./assets/about.jpeg" alt="Iamge of John Paul" />
@@ -106,10 +133,10 @@
         <section class="about-expertise">
           <div class="about-expertise-heading">Expertise</div>
           <div class="about-expertise-description">
-            <h2>
+            <p>
               Software Development, Mobile App Development, Digital Marketing,
               Branding
-            </h2>
+            </p>
           </div>
           <div class="about-expertise-list">
             <div class="expertise-item">

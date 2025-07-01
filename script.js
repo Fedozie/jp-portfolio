@@ -496,3 +496,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+
+//Code Block for Mobile Navigation
+const hamburgerOpen = document.querySelector('.hamburger-open');
+const hamburgerClose = document.querySelector('.hamburger-close')
+const navList = document.querySelector('.mobile-nav-list-container');
+const body = document.body; // Reference to the body for scroll control
+const navItems = document.querySelectorAll('.mobile-nav-item a'); // Select all nav item links
+
+hamburgerOpen.addEventListener('click', () => {
+  navList.classList.add('show');
+  navList.classList.remove('hide');
+  body.style.overflow = 'hidden';
+})
+
+hamburgerClose.addEventListener('click', () => {
+  navList.classList.remove('show');
+  navList.classList.add('hide');
+  body.style.overflow = '';
+  setTimeout(() => {
+    if (!navList.classList.contains('show')) {
+      navList.classList.remove('hide');
+    }
+  }, 300);
+})
+
+navItems.forEach(item => {
+  item.addEventListener('click', (e) => {
+    navList.classList.remove('show');
+    body.style.overflow = '';
+    const targetId = item.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      e.preventDefault();
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(() => {
+      if (!navList.classList.contains('show')) {
+        navList.classList.remove('hide');
+      }
+    }, 300);
+  });
+});
+
