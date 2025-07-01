@@ -238,9 +238,9 @@ body {
   transform: translateY(0);
 }
 
-.mobile-nav-list-container.hide{
+.mobile-nav-list-container.hide {
   transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out; 
+  transition: transform 0.3s ease-in-out;
 }
 
 .main {
@@ -575,7 +575,7 @@ body {
 .description {
   font-family: var(--font-pri);
   color: #999;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.8;
   font-weight: 300;
   margin: 0;
@@ -1151,6 +1151,7 @@ body {
 }
 
 .interests-body {
+  font-family: var(--font-pri);
   color: var(--pri-colour-5);
 }
 
@@ -1563,10 +1564,10 @@ body {
 
   .about-main {
     flex-direction: column;
-    padding-top: 5rem; /* Adjusted top padding */
-    gap: 1.5rem; /* Space between image and description */
-    position: relative; /* Ensure positioning context */
-    height: auto; /* Allow natural height */
+    padding-top: 5rem;
+    gap: 1.5rem;
+    position: relative;
+    height: auto;
     padding-top: 3rem;
 
     .about-image {
@@ -1641,6 +1642,19 @@ body {
     padding: 3rem 0;
   }
 
+  .portfolio-main .slider {
+    padding: 3rem 0;
+  }
+
+  .portfolio-main .slide {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .testimonial {
+    width: 100%;
+  }
+
   .other-text {
     flex-direction: column;
   }
@@ -1679,5 +1693,146 @@ body {
 
   .copyright {
     padding: 0 5rem;
+  }
+}
+
+@media (max-width: 575px) {
+
+  .viewport-container{
+    padding: 0 3rem;
+  }
+
+  .navbar{
+    padding: 2rem 3rem;
+  }
+
+  .main{
+
+    .main-second{
+      width: 100%;
+      margin-top: 3rem;
+    }
+
+    .main-second > h1{
+      font-size: 2.5rem;
+    }
+
+    .main-socials a{
+      font-size: 0.5rem;
+    }
+  }
+
+  .about-main{
+    padding: 0 3rem;
+
+      .about-description > p {
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .about-description-button {
+
+    & > button {
+      padding: 1rem !important;
+    }
+  }
+
+  .about-expertise {
+    padding: 3rem;
+  }
+
+  .about-expertise-description {
+    font-size: 1.5rem;
+  }
+
+  .expertise-title {
+    font-size: 1rem;
+  }
+
+  .company-name {
+    font-size: 2rem;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  .bullet::after{|
+    height: 10rem !important;
+  }
+
+  .portfolio {
+    padding: 2.5rem;
+  }
+
+  .intro-port {
+    .intro-port-heading {
+      font-size: 4rem;
+    }
+
+    .intro-port-text {
+      font-size: 0.3rem;
+    }
+  }
+
+  .intro-folio {
+    .intro-folio-heading {
+      font-size: 4rem;
+    }
+
+    .intro-folio-text {
+      font-size: 0.3rem;
+    }
+  }
+
+  .portfolio-main-heading {
+    font-size: 1rem;
+  }
+
+  .projects-container {
+    max-width: 100%;
+  }
+
+  .project-card {
+    height: 7rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+  }
+
+  .text-container {
+    font-size: 1.25rem;
+    text-align: justify;
+  }
+
+  .contact {
+    padding-top: 3.5rem;
+    padding-bottom: 10rem;
+  }
+
+  .contact-second {
+    font-size: 1rem;
+  }
+
+  .contact-third-contact div > p,
+  .contact-third-socials div > p,
+  .contact-third-socials a {
+    font-size: 0.8rem;
+  }
+
+  .contact-third-button {
+    & button {
+      padding: 1rem;
+    }
+  }
+
+  .copyright {
+    padding: 0 3rem;
   }
 }
