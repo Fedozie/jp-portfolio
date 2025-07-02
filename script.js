@@ -149,32 +149,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Code block to handle modal upon clicking the project
 const projectData = {
-  'retro-camera': {
-    image: './assets/about-us-hero-img.webp',
+  'well-trust': {
+    image: './assets/welltrust.jpeg',
     type: 'Website',
-    title: 'Retro Camera',
-    description: 'A beautifully designed e-commerce website for vintage cameras, built with modern web technologies to provide a seamless user experience.',
+    title: 'WellTrust Health Staff',
+    description: 'A beautifully designed website for a hospital based in the United Kingdom.',
+    link: "https://welltrusthealthstaff.co.uk/",
     technologies: ['HTML', 'CSS', 'JavaScript']
   },
-  'church-site': {
+  'ginilog': {
     image: './assets/about.jpeg',
     type: 'Website',
-    title: 'Light City Church',
+    title: 'Ginilog',
     description: 'A beautifully designed website for my local website.',
+    link: 'https://ginilog.com/',
     technologies: ['Next', 'Tailwind CSS', 'API Integration']
   },
-  'rangers-club': {
-    image: './assets/rangers.jpg',
-    type: 'Branding',
-    title: 'Rangers F.C.',
+  'bring-my-gas': {
+    image: './assets/bring-my-gas.jpeg',
+    type: 'Website',
+    title: 'Bring my Gas',
     description: 'A total branding makeover for Rangers Footbal Club.',
+    link: 'https://bringmygas.com/',
     technologies: ['Design Thinking', 'Photoshop', 'Figma']
   },
-  'mavin-records': {
-    image: './assets/mavin-records.jpg',
-    type: 'Digital Marketing',
-    title: 'Mavin Records',
+  'abincii': {
+    image: './assets/abincii.jpeg',
+    type: 'Android App',
+    title: 'Abincii Manager App',
     description: 'A digital marketing job for a local stores to increase reach.',
+    link: 'https://play.google.com/store/apps/details?id=com.abincii.abincii_manager_app',
+    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+  },
+  'ganat-clinic': {
+    image: './assets/mavin-records.jpg',
+    type: ['Android App', 'IOS App'],
+    title: 'Ganat E-Clinic',
+    description: 'A digital marketing job for a local stores to increase reach.',
+    link: ['https://play.google.com/store/apps/details?id=com.applicatin.doc_e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-health-workers/id6450670640'],
+    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+  },
+  'bring-my-gas-app': {
+    image: './assets/bring-my-gas.jpeg',
+    type: ['Android App', 'IOS App'],
+    title: 'Bring My Gas App',
+    description: 'A digital marketing job for a local stores to increase reach.',
+    link: ['https://play.google.com/store/apps/details?id=com.bmg.bmg_customer', 'https://apps.apple.com/ng/app/bring-my-gas-app/id6740024841'],
+    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+  },
+  'ganat-healthcare': {
+    image: './assets/mavin-records.jpg',
+    type: ['Android App', 'IOS App'],
+    title: 'Ganat Healthcare',
+    description: 'A digital marketing job for a local stores to increase reach.',
+    link: ['https://play.google.com/store/apps/details?id=com.applicatin.doc_e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-health-workers/id6450670640'],
     technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
   }
 }
@@ -186,6 +214,7 @@ const modalImage = document.querySelector('#modalImage');
 const modalType = document.querySelector('#modalType');
 const modalTitle = document.querySelector('#modalTitle');
 const modalDescription = document.querySelector('#modalDescription');
+const modalLinkContainer = document.querySelector('.modal-link-container');
 const modalTech = document.querySelector('#modalTech');
 const closeModal = document.querySelector('.close');
 
@@ -209,7 +238,7 @@ const renderProjectCards = () => {
         </div>
       </div>
       <div class="project-content">
-        <div class="project-type">${project.type}</div>
+        <div class="project-type">${Array.isArray(project.type) ? project.type.join(', ') : project.type}</div>
         <div class="project-title">${project.title}</div>
         <div class="external-icon">
           <i class="fa-solid fa-arrow-right-long fa-rotate-by"></i>
@@ -225,9 +254,20 @@ const renderProjectCards = () => {
       // Populate modal content
       modalImage.src = project.image;
       modalImage.alt = project.title;
-      modalType.textContent = project.type;
+      modalType.textContent = Array.isArray(project.type) ? project.type.join(', ') : project.type;
       modalTitle.textContent = project.title;
       modalDescription.textContent = project.description;
+      modalLinkContainer.innerHTML = '';
+
+      if (Array.isArray(project.link)) {
+        const links = project.link.map((link, index) => {
+          const platform = project.type[index] || `Link ${index + 1}`;
+          return `<a href="${link}" class="modal-link" target="_blank">${platform.replace("App", "")}</a>`;
+        })
+        modalLinkContainer.innerHTML = `See it on ${links.join(' and ')}`;
+      } else {
+        modalLinkContainer.innerHTML = `See it <a href="${project.link}" class="modal-link" target="_blank">here</a>`;
+      }
 
       // Clear and populate technology tags
       modalTech.innerHTML = '';
@@ -466,13 +506,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const circles = document.querySelectorAll('.semi-circle');
   let current = 0;
 
-  function revealNext() {
-    if (current < circles.length) {
-      circles[current].classList.add('show');
-      current++;
-    }
-  }
-
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -490,13 +523,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleSemiCircleScroll() {
-    revealNext();
+    const sectionTop = section.getBoundingClientRect().top;
+    const sectionHeight = section.offsetHeight;
+    const scrollProgress = Math.min(1, (window.innerHeight - sectionTop) / sectionHeight);
+
+    const target = Math.floor(scrollProgress * circles.length);
+
+    while (current < target && current < circles.length) {
+      circles[current].classList.add('show');
+      current++;
+    }
+
     if (current >= circles.length) {
       window.removeEventListener('scroll', handleSemiCircleScroll);
     }
+
   }
 });
-
 
 //Code Block for Mobile Navigation
 const hamburgerOpen = document.querySelector('.hamburger-open');
