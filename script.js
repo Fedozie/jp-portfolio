@@ -158,7 +158,7 @@ const projectData = {
     technologies: ['HTML', 'CSS', 'JavaScript']
   },
   'ginilog': {
-    image: './assets/about.jpeg',
+    image: './assets/ginilog.jpg',
     type: 'Website',
     title: 'Ginilog',
     description: 'A beautifully designed website for my local website.',
@@ -182,11 +182,11 @@ const projectData = {
     technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
   },
   'ganat-clinic': {
-    image: './assets/mavin-records.jpg',
+    image: './assets/ganat-e-clinic.webp',
     type: ['Android App', 'IOS App'],
     title: 'Ganat E-Clinic',
     description: 'A digital marketing job for a local stores to increase reach.',
-    link: ['https://play.google.com/store/apps/details?id=com.applicatin.doc_e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-health-workers/id6450670640'],
+    link: ['https://play.google.com/store/apps/details?id=com.app.e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-app/id6450014140'],
     technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
   },
   'bring-my-gas-app': {
@@ -198,7 +198,7 @@ const projectData = {
     technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
   },
   'ganat-healthcare': {
-    image: './assets/mavin-records.jpg',
+    image: './assets/e-healthcare.jpeg',
     type: ['Android App', 'IOS App'],
     title: 'Ganat Healthcare',
     description: 'A digital marketing job for a local stores to increase reach.',
@@ -424,62 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.error('Required elements (.slider or .dots) not found in .portfolio-main');
   }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.querySelector('.carousel');
-  const items = document.querySelectorAll('.carousel-item');
-  const imageUrls = [
-    './assets/about-us-hero-img.webp',
-    './assets/about.jpeg',
-    './assets/rangers.jpg',
-    './assets/mavin-records.jpg',
-    './assets/about.jpg',
-    './assets/ceo-image.jpg'
-  ];
-  let currentIndex = 0;
-  const intervalTime = 3000; // 3 seconds
-
-  // Initialize carousel items with images
-  items.forEach((item, index) => {
-    item.style.backgroundImage = `url(${imageUrls[index % imageUrls.length]})`;
-  });
-
-  function updateCarousel() {
-    items.forEach((item, index) => {
-      const position = (currentIndex + index - 1 + imageUrls.length) % imageUrls.length;
-      item.style.backgroundImage = `url(${imageUrls[position]})`;
-
-      item.classList.remove('left', 'center', 'right', 'roll-in', 'roll-out');
-
-      if (index === 0) {
-        item.classList.add('left');
-      } else if (index === 1) {
-        item.classList.add('center');
-        item.classList.add('roll-in'); // Apply roll-in animation
-        setTimeout(() => item.classList.remove('roll-in'), 600); // Remove after animation
-      } else if (index === 2) {
-        item.classList.add('right');
-      }
-    });
-
-    // Remove roll-out from the previous center item (now left)
-    setTimeout(() => {
-      items[0].classList.add('roll-out');
-      setTimeout(() => items[0].classList.remove('roll-out'), 600); // Remove after animation
-    }, 50); // Slight delay to ensure smooth transition
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % imageUrls.length;
-    updateCarousel();
-  }
-
-  // Start automatic sliding
-  let slideInterval = setInterval(nextSlide, intervalTime);
-
-  // Initial setup
-  updateCarousel();
 });
 
 //Code block for Slideshow
