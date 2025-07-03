@@ -89,6 +89,7 @@ body {
   z-index: 1000;
   max-width: 100%;
   box-sizing: border-box; 
+  
 
   .navbar-list {
     display: flex;
@@ -240,7 +241,7 @@ body {
   }
 }
 
-.mobile-nav-list-container.show {
+.mobile-nav-list-container.reveal {
   display: flex;
   transform: translateY(0);
 }
@@ -993,7 +994,6 @@ body {
 .other {
   width: 80%;
   margin: 0 auto;
-  /* padding: 3rem 0; */
   position: relative;
 }
 
@@ -1529,6 +1529,7 @@ body {
     align-items: center;
     justify-content: space-between;
     border: none;
+    width: 100%;
     max-width: 100%;
     height: 1.5rem;
     margin: 0;
@@ -1549,7 +1550,7 @@ body {
     display: none !important;
   }
 
-  .show {
+  .reveal {
     display: flex;
   }
 
@@ -1880,7 +1881,8 @@ body {
 
 @media screen and (max-width: 480px) {
   .viewport-container{
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    height: auto;
   }
 
   .main{
@@ -1890,11 +1892,37 @@ body {
     }
   }
 
+  .about-main{
+    padding-top: 5rem;
+  }
+
   .navbar{
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
 
   .portfolio{
-    padding: 1rem;
+    padding: 1.5rem;
+  }
+
+  .other{
+    margin: 0;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  .contact{
+    margin: 0;
+    width: 100%;
+    padding: 0 1.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 10rem;
+  }
+
+  .contact::after{
+    width: 85%;
+  }
+
+  .copyright {
+    padding: 0 1.5rem;
   }
 }

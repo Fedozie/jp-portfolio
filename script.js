@@ -155,55 +155,55 @@ const projectData = {
     title: 'WellTrust Health Staff',
     description: 'A beautifully designed website for a hospital based in the United Kingdom.',
     link: "https://welltrusthealthstaff.co.uk/",
-    technologies: ['HTML', 'CSS', 'JavaScript']
+    technologies: ['ASP net Core C#', 'HTML', 'CSS', 'Javascript']
   },
   'ginilog': {
     image: './assets/ginilog.jpg',
     type: 'Website',
     title: 'Ginilog',
-    description: 'A beautifully designed website for my local website.',
+    description: 'A beautifully designed website for my local business which handles logistics.',
     link: 'https://ginilog.com/',
-    technologies: ['Next', 'Tailwind CSS', 'API Integration']
+    technologies: ['ASP.Net Core', 'HTML', 'CSS', 'Javascript']
   },
   'bring-my-gas': {
     image: './assets/bring-my-gas.jpeg',
     type: 'Website',
     title: 'Bring my Gas',
-    description: 'A total branding makeover for Rangers Footbal Club.',
+    description: 'A business for an SME which helps you secure your gas from the comfort of your mobile phone.',
     link: 'https://bringmygas.com/',
-    technologies: ['Design Thinking', 'Photoshop', 'Figma']
+    technologies: ['ASP.Net Core', 'HTML', 'CSS', 'Javascript']
   },
   'abincii': {
     image: './assets/abincii.jpeg',
     type: 'Android App',
     title: 'Abincii Manager App',
-    description: 'A digital marketing job for a local stores to increase reach.',
+    description: 'An all-in-one mobile app designed for restaurant owners and managers to provide them with tools to track inventory, oversee staff, monitor sales, and streamline operations—all from one intuitive dashboard.',
     link: 'https://play.google.com/store/apps/details?id=com.abincii.abincii_manager_app',
-    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+    technologies: ['Flutter', 'Dart']
   },
   'ganat-clinic': {
     image: './assets/ganat-e-clinic.webp',
     type: ['Android App', 'IOS App'],
     title: 'Ganat E-Clinic',
-    description: 'A digital marketing job for a local stores to increase reach.',
+    description: 'This is a solution that makes communication between medical practitioners and users easy.',
     link: ['https://play.google.com/store/apps/details?id=com.app.e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-app/id6450014140'],
-    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+    technologies: ['Flutter', 'Dart']
   },
   'bring-my-gas-app': {
     image: './assets/bring-my-gas.jpeg',
     type: ['Android App', 'IOS App'],
     title: 'Bring My Gas App',
-    description: 'A digital marketing job for a local stores to increase reach.',
+    description: 'A business for an SME which helps you secure your gas from the comfort of your mobile phone.',
     link: ['https://play.google.com/store/apps/details?id=com.bmg.bmg_customer', 'https://apps.apple.com/ng/app/bring-my-gas-app/id6740024841'],
-    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+    technologies: ['Flutter', 'Dart']
   },
   'ganat-healthcare': {
     image: './assets/e-healthcare.jpeg',
     type: ['Android App', 'IOS App'],
     title: 'Ganat Healthcare',
-    description: 'A digital marketing job for a local stores to increase reach.',
+    description: 'This is a solution that makes communication between medical practitioners and users easy.',
     link: ['https://play.google.com/store/apps/details?id=com.applicatin.doc_e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-health-workers/id6450670640'],
-    technologies: ['Google Analytics', 'Twitter', 'Facebook Marketplace']
+    technologies: ['Flutter', 'Dart']
   }
 }
 
@@ -493,17 +493,17 @@ const body = document.body; // Reference to the body for scroll control
 const navItems = document.querySelectorAll('.mobile-nav-item a'); // Select all nav item links
 
 hamburgerOpen.addEventListener('click', () => {
-  navList.classList.add('show');
+  navList.classList.add('reveal');
   navList.classList.remove('hide');
   body.style.overflow = 'hidden';
 })
 
 hamburgerClose.addEventListener('click', () => {
-  navList.classList.remove('show');
+  navList.classList.remove('reveal');
   navList.classList.add('hide');
   body.style.overflow = '';
   setTimeout(() => {
-    if (!navList.classList.contains('show')) {
+    if (!navList.classList.contains('reveal')) {
       navList.classList.remove('hide');
     }
   }, 300);
@@ -511,7 +511,7 @@ hamburgerClose.addEventListener('click', () => {
 
 navItems.forEach(item => {
   item.addEventListener('click', (e) => {
-    navList.classList.remove('show');
+    navList.classList.remove('reveal');
     body.style.overflow = '';
     const targetId = item.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
@@ -520,7 +520,7 @@ navItems.forEach(item => {
       targetSection.scrollIntoView({ behavior: 'smooth' });
     }
     setTimeout(() => {
-      if (!navList.classList.contains('show')) {
+      if (!navList.classList.contains('reveal')) {
         navList.classList.remove('hide');
       }
     }, 300);
