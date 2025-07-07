@@ -1,3 +1,6 @@
+// Reference to the body for scroll control
+const body = document.body; // Moved to the top for clarity
+
 // Code block for smooth scrolling behaviour for navigation items
 document.querySelectorAll('.navbar-item').forEach(item => {
   item.addEventListener('click', function (e) {
@@ -121,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 200);
 });
 
-//Code block to observe sections and trigger animations only when they get there
+// Code block to observe sections and trigger animations only when they get there
 document.addEventListener("DOMContentLoaded", () => {
   // Select sections to observe
   const sections = document.querySelectorAll("#home, #about, .about-expertise, #portfolio, #other, #contact");
@@ -145,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Observe each section
   sections.forEach((section) => observer.observe(section));
 });
-
 
 // Code block to handle modal upon clicking the project
 const projectData = {
@@ -205,10 +207,9 @@ const projectData = {
     link: ['https://play.google.com/store/apps/details?id=com.applicatin.doc_e_clinic_app', 'https://apps.apple.com/app/ganat-e-clinic-health-workers/id6450670640'],
     technologies: ['Flutter', 'Dart']
   }
-}
+};
 
 const projectsContainer = document.querySelector('.projects-container');
-const projectCards = document.querySelectorAll('.project-card');
 const modal = document.querySelector('.modal');
 const modalImage = document.querySelector('#modalImage');
 const modalType = document.querySelector('#modalType');
@@ -217,6 +218,7 @@ const modalDescription = document.querySelector('#modalDescription');
 const modalLinkContainer = document.querySelector('.modal-link-container');
 const modalTech = document.querySelector('#modalTech');
 const closeModal = document.querySelector('.close');
+let scrollPosition = 0;
 
 const renderProjectCards = () => {
   projectsContainer.innerHTML = ''; // Clear existing cards
@@ -263,7 +265,7 @@ const renderProjectCards = () => {
         const links = project.link.map((link, index) => {
           const platform = project.type[index] || `Link ${index + 1}`;
           return `<a href="${link}" class="modal-link" target="_blank">${platform.replace("App", "")}</a>`;
-        })
+        });
         modalLinkContainer.innerHTML = `See it on ${links.join(' and ')}`;
       } else {
         modalLinkContainer.innerHTML = `See it <a href="${project.link}" class="modal-link" target="_blank">here</a>`;
@@ -278,38 +280,76 @@ const renderProjectCards = () => {
         modalTech.appendChild(tag);
       });
 
-      // Show the modal
+      // Show the modal and lock scroll
+      scrollPosition = window.scrollY || window.pageYOffset;
+      body.classList.add('no-scroll');
+      body.style.top = `-${scrollPosition}px`;
       modal.style.display = 'block';
     });
   });
-}
+};
 
 // Close modal when clicking the close button
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
+  body.classList.remove('no-scroll');
+  body.style.top = ''; // Clear the top style to restore normal positioning
+
+  window.scrollTo({
+    top: scrollPosition,
+    left: 0,
+    behavior: 'instant'
+  });
 });
 
 // Close modal when clicking outside the modal content
 window.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
+    body.classList.remove('no-scroll');
+    body.style.top = ''; // Clear the top style to restore normal positioning
+
+    window.scrollTo({
+      top: scrollPosition,
+      left: 0,
+      behavior: 'instant'
+    });
   }
 });
 
-// Close modal with Escape key for accessibility sake
+// Close modal with Escape key for accessibility
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.style.display === 'block') {
     modal.style.display = 'none';
+    body.classList.remove('no-scroll');
+    body.style.top = ''; // Clear the top style to restore normal positioning
+
+    window.scrollTo({
+      top: scrollPosition,
+      left: 0,
+      behavior: 'instant'
+    });
   }
 });
 
-// Initialize project cards upoon page load
+// Prevent touch scrolling on background when modal is open
+document.addEventListener('touchmove', (e) => {
+  if (modal.style.display === 'block') {
+    // Allow scrolling within the modal content
+    if (e.target.closest('.modal-content')) {
+      return;
+    }
+    // Prevent scrolling on the background
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// Initialize project cards upon page load
 document.addEventListener('DOMContentLoaded', () => {
   renderProjectCards();
 });
 
-
-//Code block to handle testimonial section
+// Code block to handle testimonial section
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.querySelector('.portfolio-main .slider');
   const dotsContainer = document.querySelector('.portfolio-main .dots');
@@ -340,17 +380,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const testimonial1 = document.createElement('div');
       testimonial1.classList.add('testimonial');
       testimonial1.innerHTML = `
-        <div class = "testimonial-heading"> 
-          <div class = "testimonial-avatar">
+        <div class="testimonial-heading"> 
+          <div class="testimonial-avatar">
             <img src="${testimonials[i].image}" alt="${testimonials[i].name}">
           </div>
-
           <div>
-            <p class = "testimonial-name">${testimonials[i].name}</p>
-            <p class = "testimonial-role">${testimonials[i].role}</p>
+            <p class="testimonial-name">${testimonials[i].name}</p>
+            <p class="testimonial-role">${testimonials[i].role}</p>
           </div>
         </div>
-        <p class = "testimonial-text">${testimonials[i].text}</p>
+        <p class="testimonial-text">${testimonials[i].text}</p>
       `;
       slide.appendChild(testimonial1);
 
@@ -358,18 +397,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const testimonial2 = document.createElement('div');
         testimonial2.classList.add('testimonial');
         testimonial2.innerHTML = `
-        <div class = "testimonial-heading"> 
-          <div class = "testimonial-avatar">
-            <img src="${testimonials[i].image}" alt="${testimonials[i + 1].name}">
+          <div class="testimonial-heading"> 
+            <div class="testimonial-avatar">
+              <img src="${testimonials[i + 1].image}" alt="${testimonials[i + 1].name}">
+            </div>
+            <div>
+              <p class="testimonial-name">${testimonials[i + 1].name}</p>
+              <p class="testimonial-role">${testimonials[i + 1].role}</p>
+            </div>
           </div>
-
-          <div>
-            <p class = "testimonial-name">${testimonials[i + 1].name}</p>
-            <p class = "testimonial-role">${testimonials[i + 1].role}</p>
-          </div>
-        </div>
-        <p class = "testimonial-text">${testimonials[i].text}</p>
-      `;
+          <p class="testimonial-text">${testimonials[i + 1].text}</p>
+        `;
         slide.appendChild(testimonial2);
       }
       slider.appendChild(slide);
@@ -426,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//Code block for Slideshow
+// Code block for Slideshow
 const images = document.querySelectorAll('.slideshow-img');
 let currentImageIndex = 0;
 const fadeInterval = 3000; // Time in milliseconds (3 seconds)
@@ -481,22 +519,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (current >= circles.length) {
       window.removeEventListener('scroll', handleSemiCircleScroll);
     }
-
   }
 });
 
-//Code Block for Mobile Navigation
+// Code Block for Mobile Navigation
 const hamburgerOpen = document.querySelector('.hamburger-open');
-const hamburgerClose = document.querySelector('.hamburger-close')
+const hamburgerClose = document.querySelector('.hamburger-close');
 const navList = document.querySelector('.mobile-nav-list-container');
-const body = document.body; // Reference to the body for scroll control
 const navItems = document.querySelectorAll('.mobile-nav-item a'); // Select all nav item links
 
 hamburgerOpen.addEventListener('click', () => {
   navList.classList.add('reveal');
   navList.classList.remove('hide');
   body.style.overflow = 'hidden';
-})
+});
 
 hamburgerClose.addEventListener('click', () => {
   navList.classList.remove('reveal');
@@ -507,7 +543,7 @@ hamburgerClose.addEventListener('click', () => {
       navList.classList.remove('hide');
     }
   }, 300);
-})
+});
 
 navItems.forEach(item => {
   item.addEventListener('click', (e) => {
@@ -526,4 +562,3 @@ navItems.forEach(item => {
     }, 300);
   });
 });
-
