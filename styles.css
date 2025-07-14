@@ -1525,6 +1525,22 @@ body {
   }
 }
 
+@media screen and (min-width: 1024px) and (max-height: 800px) {
+  .viewport-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .main{
+    margin-top: 10rem;
+  }
+  
+  .portfolio-intro {
+    height: auto;
+    min-height: 80vh;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navbar {
     display: flex;
@@ -1898,7 +1914,6 @@ body {
     max-height: 80vh;
     padding: 1rem;
   }
-
 }
 
 @media screen and (max-width: 480px) {

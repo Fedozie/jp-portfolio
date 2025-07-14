@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    { threshold: 0.2 } // Trigger when 10% of section is visible
+    { threshold: 0.05 } // Trigger when 10% of section is visible
   );
 
   // Observe each section
