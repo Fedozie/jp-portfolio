@@ -1745,6 +1745,16 @@ body {
     width: 100%;
   }
 
+  .contact-third-contact a{
+    display: inline-block;
+    margin: .5rem 0;
+  }
+
+  .contact-third-contact > div{
+    display: flex;
+    flex-direction: column;
+  }
+
   .copyright {
     padding: 0 5rem;
   }
